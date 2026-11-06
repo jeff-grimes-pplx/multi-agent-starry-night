@@ -1,0 +1,11 @@
+{
+  "agent_id": 2,
+  "model": "Gemini 4 Argon",
+  "version": "v1",
+  "strokes": 729,
+  "metrics": {
+    "psnr": 19.34,
+    "ssim": 0.6492,
+    "delta_e": 18.08
+  }
+}
