@@ -1,0 +1,17 @@
+{
+  "agent_id": 3,
+  "model": "GPT-6.1 Sol",
+  "version": "v2",
+  "strokes": 2585,
+  "metrics_v1": {
+    "psnr": 25.58,
+    "ssim": 0.8373,
+    "delta_e": 7.94
+  },
+  "metrics_v2": {
+    "psnr": 33.72,
+    "ssim": 0.9405,
+    "delta_e": 2.26
+  },
+  "summary": "Wove 2,585 writhing S-curve vertical bristle strokes with warm raw umber, bronze ochre, and deep viridian flame counter-strokes; regional DeltaE dropped from 7.94 to 2.26 (SSIM 0.9405)."
+}
