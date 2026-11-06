@@ -1,0 +1,17 @@
+{
+  "agent_id": 4,
+  "model": "Claude Sonnet 4.6",
+  "version": "v2",
+  "strokes": 2737,
+  "metrics_v1": {
+    "psnr": 19.27,
+    "ssim": 0.6464,
+    "delta_e": 12.19
+  },
+  "metrics_v2": {
+    "psnr": 30.14,
+    "ssim": 0.8911,
+    "delta_e": 3.57
+  },
+  "summary": "Added crisp Prussian-blue architectural contour framing around Saint-Martin church spire and cottage roofs plus warm yellow window accents (2,737 strokes; DeltaE 12.19 -> 3.57)."
+}
