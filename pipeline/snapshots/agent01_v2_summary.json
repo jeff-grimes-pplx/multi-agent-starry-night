@@ -1,0 +1,17 @@
+{
+  "agent_id": 1,
+  "model": "Claude Opus 4.6",
+  "version": "v2",
+  "strokes": 7460,
+  "metrics_v1": {
+    "psnr": 21.65,
+    "ssim": 0.6782,
+    "delta_e": 10.66
+  },
+  "metrics_v2": {
+    "psnr": 30.82,
+    "ssim": 0.9088,
+    "delta_e": 3.14
+  },
+  "summary": "Reworked turbulent sky with 7,460 curved quadratic Bezier bristle strokes (curv=0.22) and zinc-white eddy ridge highlights; curl alignment +41.4%, DeltaE dropped from 10.66 to 3.14."
+}
