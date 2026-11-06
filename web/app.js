@@ -140,6 +140,7 @@
         loadReferenceImage('assets/reference_1000x792.jpg'),
       ]);
       state.data = await dataResp.json();
+      state.data.pass1Count = state.data.strokesV1 ? state.data.strokesV1.length : 4697;
 
       for (const ag of state.data.agents) {
         state.agentMap[ag.id] = ag;
@@ -384,6 +385,7 @@
         strokeIdx === TOTAL_STROKES
       ) {
         pCtx.drawImage(state.bakedV2All, 0, 0);
+        state.lastEnvKey = '';
       } else if (
         solo === 0 &&
         state.impastoRelief &&
@@ -392,31 +394,40 @@
         strokeIdx === p1Count
       ) {
         pCtx.drawImage(state.bakedV1All, 0, 0);
+        state.lastEnvKey = '';
       } else if (state.mode === 'xray') {
         renderXRayMode(pCtx, strokesV2, strokeIdx, solo);
+        state.lastEnvKey = '';
       } else {
-        fillPrimedLinen(pCtx);
-
-        // Faint ground-truth context when soloing a single subagent
-        if (solo !== 0 && state.refLoaded) {
-          pCtx.save();
-          pCtx.globalAlpha = 0.14;
-          pCtx.drawImage(state.refImage, 0, 0, 1000, 792);
-          pCtx.restore();
-        }
-
         // During Pass 1 (0 .. p1Count), draw from strokesV1 so the user sees the authentic v1 initial strokes!
         // During Pass 2 (> p1Count), draw the v2 strokes up to strokeIdx!
-        const activePool = strokeIdx <= p1Count ? strokesV1 : strokesV2;
+        const poolId = strokeIdx <= p1Count ? 'v1' : 'v2';
+        const activePool = poolId === 'v1' ? strokesV1 : strokesV2;
         const limit = Math.min(activePool.length, strokeIdx);
+        const envKey = `${poolId}_${solo}_${state.impastoRelief}_${state.rakingAzimuthDeg}_${state.mode}`;
 
-        for (let i = 0; i < limit; i++) {
+        let startIdx = 0;
+        if (state.lastEnvKey === envKey && limit >= (state.lastLimit || 0)) {
+          startIdx = state.lastLimit || 0;
+        } else {
+          fillPrimedLinen(pCtx);
+          if (solo !== 0 && state.refLoaded) {
+            pCtx.save();
+            pCtx.globalAlpha = 0.14;
+            pCtx.drawImage(state.refImage, 0, 0, 1000, 792);
+            pCtx.restore();
+          }
+        }
+
+        for (let i = startIdx; i < limit; i++) {
           const s = activePool[i];
           if (solo === 0 || s[10] === solo) {
             drawImpastoStroke(pCtx, s, state.impastoRelief, lightVec);
             updateAgentCursorTarget(s);
           }
         }
+        state.lastEnvKey = envKey;
+        state.lastLimit = limit;
       }
 
       state.lastRenderedKey = stateKey;
