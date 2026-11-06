@@ -626,10 +626,12 @@
 
       cur.x += (cur.tx - cur.x) * 0.28;
       cur.y += (cur.ty - cur.y) * 0.28;
+      const drawX = Math.min(978, Math.max(22, cur.x));
+      const drawY = Math.min(756, Math.max(24, cur.y));
 
       const ringColor = isCritique ? '#FB923C' : ag.color;
       oCtx.save();
-      oCtx.translate(cur.x, cur.y);
+      oCtx.translate(drawX, drawY);
 
       // Outer glowing ring
       oCtx.beginPath();
@@ -650,8 +652,8 @@
         : `${ag.code} · ${ag.model} (v${cur.pass})`;
       oCtx.font = '600 11.5px "JetBrains Mono", monospace';
       const tw = oCtx.measureText(tagText).width + 12;
-      const boxX = cur.x > 780 ? -tw - 10 : 12;
-      const boxY = cur.y < 36 ? 6 : -24;
+      const boxX = drawX + tw + 20 > 988 ? -tw - 10 : 12;
+      const boxY = drawY < 38 ? 6 : drawY > 740 ? -26 : -22;
 
       oCtx.fillStyle = 'rgba(10, 13, 20, 0.9)';
       oCtx.strokeStyle = ringColor;
@@ -906,26 +908,26 @@
         const cnt = Math.round(ag.strokesV1 * phase.frac1);
         statusEl.textContent = 'Pass 1 (v1)';
         statusEl.classList.add('status-blue');
-        metricsEl.textContent = `ΔE ${ag.deltaEV1.toFixed(1)} · ${cnt.toLocaleString()} strk`;
+        metricsEl.textContent = `ΔE ${ag.deltaEV1.toFixed(1)} · ${cnt.toLocaleString()}`;
         barEl.style.width = `${Math.round(phase.frac1 * 40)}%`;
       } else if (phase.act === 'critique') {
         row.classList.add('state-critique');
-        statusEl.textContent = 'QA Critique: Rework';
+        statusEl.textContent = 'QA Critique';
         statusEl.classList.add('status-amber');
-        metricsEl.textContent = `ΔE ${ag.deltaEV1.toFixed(1)} → Target <4.0`;
+        metricsEl.textContent = `ΔE ${ag.deltaEV1.toFixed(1)} → <4.0`;
         barEl.style.width = '42%';
       } else if (phase.act === 'v2') {
         const cnt = Math.round(ag.strokesV1 + (ag.strokesV2 - ag.strokesV1) * phase.frac2);
         const de = ag.deltaEV1 - (ag.deltaEV1 - ag.deltaEV2) * phase.frac2;
-        statusEl.textContent = `Rework (${ag.reworkGainLabel})`;
+        statusEl.textContent = 'Pass 2 Rework';
         statusEl.classList.add('status-emerald');
-        metricsEl.textContent = `ΔE ${de.toFixed(2)} · ${cnt.toLocaleString()}`;
+        metricsEl.textContent = `ΔE ${de.toFixed(1)} · ${cnt.toLocaleString()}`;
         barEl.style.width = `${Math.round(42 + phase.frac2 * 58)}%`;
       } else {
         row.classList.add('state-merged');
-        statusEl.textContent = `Merged (${ag.reworkGainLabel})`;
+        statusEl.textContent = 'v2 Merged';
         statusEl.classList.add('status-emerald');
-        metricsEl.textContent = `ΔE ${ag.deltaEV2.toFixed(2)} · ${ag.strokesV2.toLocaleString()}`;
+        metricsEl.textContent = `ΔE ${ag.deltaEV2.toFixed(1)} · ${ag.strokesV2.toLocaleString()}`;
         barEl.style.width = '100%';
       }
     }
@@ -1105,8 +1107,8 @@
     dom.inspCommitLink.textContent = `Commit #${String(commitObj.num).padStart(2, '0')} · ${commitObj.short} ↗`;
     dom.inspCommitLink.href = `${GITHUB_REPO_URL}/commit/${commitObj.short}`;
 
-    dom.inspGeomLine.textContent = `Quadratic Bézier (${s[0].toFixed(1)}, ${s[1].toFixed(1)}) → (${s[2].toFixed(1)}, ${s[3].toFixed(1)}) → (${s[4].toFixed(1)}, ${s[5].toFixed(1)}) · Width: ${s[6].toFixed(1)}px · Angle: ${deg}° · Hex: ${hex}`;
-    dom.inspCodeSnippet.textContent = `ctx.moveTo(${s[0].toFixed(1)}, ${s[1].toFixed(1)}); ctx.quadraticCurveTo(${s[2].toFixed(1)}, ${s[3].toFixed(1)}, ${s[4].toFixed(1)}, ${s[5].toFixed(1)}); // w=${s[6].toFixed(1)}px ${hex}`;
+    dom.inspGeomLine.textContent = `Bézier (${s[0].toFixed(1)}, ${s[1].toFixed(1)}) → (${s[4].toFixed(1)}, ${s[5].toFixed(1)}) · Width ${s[6].toFixed(1)}px · Angle ${deg}° · ${hex}`;
+    dom.inspCodeSnippet.textContent = `ctx.quadraticCurveTo(${s[2].toFixed(1)}, ${s[3].toFixed(1)}, ${s[4].toFixed(1)}, ${s[5].toFixed(1)}); // ${hex}`;
   }
 
   // ==========================================================================
