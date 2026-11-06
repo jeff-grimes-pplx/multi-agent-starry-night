@@ -579,10 +579,10 @@
     oCtx.setLineDash([]);
     const labels = [
       { id: 1, x: 390, y: 205, text: 'AG-01 · Opus 4.6 Sky Vortex (ΔE 10.66 → 3.14)' },
-      { id: 2, x: 730, y: 42, text: 'AG-02 · Argon Moon & 11 Stars (ΔE 18.08 → 3.33)' },
+      { id: 2, x: 655, y: 42, text: 'AG-02 · Argon Moon & 11 Stars (ΔE 18.08 → 3.33)' },
       { id: 3, x: 120, y: 280, text: 'AG-03 · GPT-6.1 Sol Cypress (SSIM 0.941)' },
       { id: 4, x: 465, y: 660, text: 'AG-04 · Sonnet 4.6 Village & Spire (+37.9% SSIM)' },
-      { id: 5, x: 675, y: 475, text: 'AG-05 · DeepSeek V4 Alpilles Hills (SSIM 0.909)' },
+      { id: 5, x: 645, y: 475, text: 'AG-05 · DeepSeek V4 Alpilles Hills (SSIM 0.909)' },
     ];
 
     oCtx.font = '600 12px "Satoshi", sans-serif';
@@ -749,9 +749,18 @@
     dom.commitTicksRow.querySelectorAll('.commit-tick-btn').forEach((btn) => {
       btn.classList.toggle('active', Number(btn.dataset.commit) === activeCommitNum);
     });
+    let activeCardEl = null;
     dom.activityStreamList.querySelectorAll('.stream-card').forEach((card) => {
-      card.classList.toggle('active-event', Number(card.dataset.commitNum) === activeCommitNum);
+      const isAct = Number(card.dataset.commitNum) === activeCommitNum;
+      card.classList.toggle('active-event', isAct);
+      if (isAct) activeCardEl = card;
     });
+    if (activeCardEl && state.lastActiveCommitNum !== activeCommitNum) {
+      state.lastActiveCommitNum = activeCommitNum;
+      const listEl = dom.activityStreamList;
+      const targetScroll = Math.max(0, activeCardEl.offsetTop - listEl.offsetTop - 48);
+      listEl.scrollTo({ top: targetScroll, behavior: 'smooth' });
+    }
 
     // 5. Update Subagent Swimlanes
     updateSwimlaneRows(phase);
@@ -1105,6 +1114,7 @@
     dom.canvasWrapper.hidden = isRework;
     dom.reworkView.hidden = !isRework;
     dom.curtainOverlay.hidden = newMode !== 'curtain';
+    dom.phasePill.hidden = newMode === 'curtain';
 
     state.lastRenderedKey = '';
     if (!isRework) {

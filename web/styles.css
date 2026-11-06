@@ -607,7 +607,8 @@ button {
 
 .rework-inspector-view[hidden],
 .curtain-overlay[hidden],
-.canvas-frame-wrapper[hidden] {
+.canvas-frame-wrapper[hidden],
+.canvas-phase-pill[hidden] {
   display: none !important;
 }
 
@@ -1358,6 +1359,17 @@ button {
     height: auto;
     flex-wrap: wrap;
     padding: var(--space-2) var(--space-3);
+  }
+
+  .header-brand,
+  .mode-tabs,
+  .header-telemetry,
+  .commit-ticks-row {
+    flex-wrap: wrap;
+  }
+
+  .atelier-title {
+    white-space: normal;
   }
 
   .atelier-workspace {
