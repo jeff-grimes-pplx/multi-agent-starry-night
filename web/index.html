@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Multi-Agent Atelier — Starry Night in Code</title>
+  <meta name="description" content="Interactive multi-agent orchestration observatory: Perplexity Computer (Gemini 4 Argon) directs 5 specialized subagents across Claude Opus 4.6, Gemini 4 Argon, GPT-6.1 Sol, Claude Sonnet 4.6, and DeepSeek V4 Pro to paint Van Gogh's The Starry Night (1889) in 19,922 parametric 3D-lit brushstrokes." />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=instrument-serif@400&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a href="#main-workspace" class="sr-only">Skip to observatory workspace</a>
+
+  <div class="atelier-shell">
+    <!-- Top Functional Observatory Header -->
+    <header class="atelier-header" role="banner">
+      <div class="header-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <h1 class="atelier-title">The Multi-Agent Atelier <span class="title-sub">— Starry Night in Code</span></h1>
+        <span class="ref-pill" title="Ground-truth target: Vincent van Gogh, The Starry Night (June 1889, Museum of Modern Art)">1889 MoMA Public Domain · 6 Models</span>
+      </div>
+
+      <!-- 4 Primary Inspection Mode Tabs -->
+      <nav class="mode-tabs" role="tablist" aria-label="Canvas Inspection Modes">
+        <button type="button" role="tab" aria-selected="true" class="mode-tab active" data-mode="painting" data-testid="tab-mode-painting">
+          Orchestrated Painting
+        </button>
+        <button type="button" role="tab" aria-selected="false" class="mode-tab" data-mode="curtain" data-testid="tab-mode-curtain">
+          Split-Curtain Loupe
+        </button>
+        <button type="button" role="tab" aria-selected="false" class="mode-tab" data-mode="rework" data-testid="tab-mode-rework">
+          Rework Diff Inspector <span class="tab-count">5</span>
+        </button>
+        <button type="button" role="tab" aria-selected="false" class="mode-tab" data-mode="xray" data-testid="tab-mode-xray">
+          Bézier &amp; Flow X-Ray
+        </button>
+      </nav>
+
+      <!-- Live Global Quantitative Telemetry -->
+      <div class="header-telemetry" aria-label="Live Quantitative Verification Metrics">
+        <div class="metric-chip" data-testid="metric-strokes">
+          <span class="metric-label">STROKES</span>
+          <span class="metric-val" id="hud-strokes">19,922 / 19,922</span>
+        </div>
+        <div class="metric-chip" data-testid="metric-ssim">
+          <span class="metric-label">SSIM</span>
+          <span class="metric-val metric-good" id="hud-ssim">0.9138</span>
+        </div>
+        <div class="metric-chip" data-testid="metric-delta-e">
+          <span class="metric-label">MEAN ΔE</span>
+          <span class="metric-val metric-accent" id="hud-delta-e">3.16</span>
+        </div>
+        <div class="metric-chip hide-sm" data-testid="metric-psnr">
+          <span class="metric-label">PSNR</span>
+          <span class="metric-val" id="hud-psnr">30.80 dB</span>
+        </div>
+        <a href="https://github.com/jeff-grimes-pplx/multi-agent-starry-night/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer" class="github-release-link" data-testid="link-github-release" title="Open verified GitHub repository and v1.0.0 release">
+          <span>GitHub v1.0.0</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Split Observatory Workspace -->
+    <main id="main-workspace" class="atelier-workspace">
+      <!-- LEFT / CENTER STAGE: Live Code-Painted Impasto Canvas & Rework Inspector -->
+      <section class="canvas-stage-column" aria-label="Interactive Code-Painted Impasto Canvas">
+        <!-- Sub-Toolbar: Per-Agent Layer Solo & Visual Overlays -->
+        <div class="stage-toolbar">
+          <div class="solo-filter-group" role="group" aria-label="Per-Agent Layer Solo Filter">
+            <span class="toolbar-caption">AGENT LAYER:</span>
+            <button type="button" class="solo-pill active" data-solo="0" data-testid="button-solo-all">
+              All 5 Agents <span class="pill-num">19,922</span>
+            </button>
+            <button type="button" class="solo-pill" data-solo="1" data-testid="button-solo-1" style="--ag-color: #58A6FF">
+              <span class="ag-dot"></span>01 Opus Sky <span class="pill-num">7,460</span>
+            </button>
+            <button type="button" class="solo-pill" data-solo="2" data-testid="button-solo-2" style="--ag-color: #F5C438">
+              <span class="ag-dot"></span>02 Argon Stars <span class="pill-num">3,305</span>
+            </button>
+            <button type="button" class="solo-pill" data-solo="3" data-testid="button-solo-3" style="--ag-color: #4ADE80">
+              <span class="ag-dot"></span>03 Sol Cypress <span class="pill-num">2,585</span>
+            </button>
+            <button type="button" class="solo-pill" data-solo="4" data-testid="button-solo-4" style="--ag-color: #FB923C">
+              <span class="ag-dot"></span>04 Sonnet Village <span class="pill-num">2,737</span>
+            </button>
+            <button type="button" class="solo-pill" data-solo="5" data-testid="button-solo-5" style="--ag-color: #C084FC">
+              <span class="ag-dot"></span>05 DeepSeek Hills <span class="pill-num">3,835</span>
+            </button>
+          </div>
+
+          <div class="overlay-toggles">
+            <button type="button" class="toggle-chip active" id="btn-toggle-cursors" data-testid="button-toggle-cursors" aria-pressed="true">
+              Agent Cursors
+            </button>
+            <button type="button" class="toggle-chip" id="btn-toggle-regions" data-testid="button-toggle-regions" aria-pressed="false">
+              Region Map
+            </button>
+            <button type="button" class="toggle-chip active" id="btn-toggle-impasto" data-testid="button-toggle-impasto" aria-pressed="true">
+              3D Impasto Relief
+            </button>
+            <label class="raking-slider-wrap" for="input-raking-angle" title="Adjust 3D gallery raking-light azimuth angle">
+              <span class="raking-label">Light <strong id="raking-deg-val">135°</strong></span>
+              <input type="range" id="input-raking-angle" data-testid="input-raking-angle" min="0" max="360" value="135" step="5" />
+            </label>
+          </div>
+        </div>
+
+        <!-- Viewport Container holding the Canvas Stage AND the Rework Diff Inspector View -->
+        <div class="stage-viewport" id="stage-viewport">
+          <!-- Primary Interactive Canvas Frame (Used in Painting, Curtain, and X-Ray modes) -->
+          <div class="canvas-frame-wrapper" id="canvas-frame-wrapper">
+            <div class="canvas-aspect-box" id="canvas-aspect-box">
+              <canvas id="atelier-canvas" width="1000" height="792" aria-label="Code-painted Starry Night impasto canvas"></canvas>
+              <canvas id="overlay-canvas" width="1000" height="792" aria-hidden="true"></canvas>
+
+              <!-- Split-Curtain Reference Comparison Controls (Visible in 'curtain' mode) -->
+              <div class="curtain-overlay" id="curtain-overlay" hidden>
+                <div class="curtain-badge curtain-badge-left" id="curtain-left-label">
+                  1889 MoMA Public-Domain Reference
+                </div>
+                <div class="curtain-badge curtain-badge-right" id="curtain-right-label">
+                  Code-Painted Master Canvas (v2 · 19,922 Strokes)
+                </div>
+                <div class="curtain-mode-switch">
+                  <span class="curtain-switch-label">Compare Left vs Right:</span>
+                  <button type="button" class="curtain-sub-btn active" data-curtain-pair="ref_vs_v2" data-testid="button-curtain-ref-v2">
+                    1889 MoMA vs. v2 Final
+                  </button>
+                  <button type="button" class="curtain-sub-btn" data-curtain-pair="v1_vs_v2" data-testid="button-curtain-v1-v2">
+                    v1 (Pre-Critique) vs. v2 (Post-Critique)
+                  </button>
+                </div>
+                <div class="curtain-handle" id="curtain-handle" role="slider" tabindex="0" aria-label="Split comparison curtain position" aria-valuemin="5" aria-valuemax="95" aria-valuenow="50" data-testid="slider-curtain-handle">
+                  <div class="curtain-line"></div>
+                  <div class="curtain-knob">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/><path d="M9 18l6-6-6-6" opacity="0"/></svg>
+                    <span>⇄</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Live Phase Banner inside Canvas Top-Left -->
+              <div class="canvas-phase-pill" id="canvas-phase-pill" data-testid="status-canvas-phase">
+                <span class="phase-indicator" id="phase-indicator"></span>
+                <span id="phase-text">Pass 2 Complete — All 5 Subagent Reworks Merged to Master (SSIM 0.9138)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rework Diff Inspector Panel (Visible when mode === 'rework') -->
+          <div class="rework-inspector-view" id="rework-inspector-view" hidden>
+            <div class="rework-agent-selector" role="tablist" aria-label="Select Subagent Rework Loop">
+              <button type="button" class="rework-agent-btn active" data-rework-agent="1" data-testid="button-rework-agent-1" style="--ag-color:#58A6FF">
+                <span class="ag-dot"></span>AG-01 · Opus 4.6 Sky Vortex <span class="gain-chip">+41.4% Curl</span>
+              </button>
+              <button type="button" class="rework-agent-btn" data-rework-agent="2" data-testid="button-rework-agent-2" style="--ag-color:#F5C438">
+                <span class="ag-dot"></span>AG-02 · Argon Moon &amp; Stars <span class="gain-chip">ΔE 18.1→3.3</span>
+              </button>
+              <button type="button" class="rework-agent-btn" data-rework-agent="3" data-testid="button-rework-agent-3" style="--ag-color:#4ADE80">
+                <span class="ag-dot"></span>AG-03 · Sol Cypress Flame <span class="gain-chip">SSIM 0.941</span>
+              </button>
+              <button type="button" class="rework-agent-btn" data-rework-agent="4" data-testid="button-rework-agent-4" style="--ag-color:#FB923C">
+                <span class="ag-dot"></span>AG-04 · Sonnet Village &amp; Spire <span class="gain-chip">+37.9% SSIM</span>
+              </button>
+              <button type="button" class="rework-agent-btn" data-rework-agent="5" data-testid="button-rework-agent-5" style="--ag-color:#C084FC">
+                <span class="ag-dot"></span>AG-05 · DeepSeek Alpilles Hills <span class="gain-chip">SSIM 0.909</span>
+              </button>
+            </div>
+
+            <div class="rework-comparison-grid">
+              <div class="rework-card">
+                <div class="rework-card-header">
+                  <span class="rework-badge badge-rejected">PASS 1 (v1 · REJECTED BY COMPUTER)</span>
+                  <span class="rework-stat" id="rework-v1-stat">1,836 strokes · SSIM 0.6782 · ΔE 10.66</span>
+                </div>
+                <div class="rework-img-wrap">
+                  <img id="rework-img-v1" src="assets/diffs/agent01_v1.jpg" alt="Initial v1 subagent pass before critique" width="400" height="320" />
+                </div>
+                <p class="rework-caption" id="rework-v1-flaw"></p>
+              </div>
+
+              <div class="rework-card rework-card-accepted">
+                <div class="rework-card-header">
+                  <span class="rework-badge badge-accepted">PASS 2 (v2 · REWORKED &amp; MERGED)</span>
+                  <span class="rework-stat" id="rework-v2-stat">7,460 strokes · SSIM 0.9088 · ΔE 3.14</span>
+                </div>
+                <div class="rework-img-wrap">
+                  <img id="rework-img-v2" src="assets/diffs/agent01_v2.jpg" alt="Reworked v2 subagent pass after Computer critique" width="400" height="320" />
+                </div>
+                <p class="rework-caption" id="rework-v2-fix"></p>
+              </div>
+
+              <div class="rework-card">
+                <div class="rework-card-header">
+                  <span class="rework-badge badge-ref">1889 MoMA REFERENCE TARGET</span>
+                  <span class="rework-stat" id="rework-ref-stat">Ground-Truth Regional Target</span>
+                </div>
+                <div class="rework-img-wrap">
+                  <img id="rework-img-ref" src="assets/diffs/agent01_ref.jpg" alt="1889 MoMA ground-truth regional crop" width="400" height="320" />
+                </div>
+                <p class="rework-caption" id="rework-critique-note"></p>
+              </div>
+            </div>
+
+            <div class="rework-code-diff-box">
+              <div class="code-diff-header">
+                <span class="code-diff-title" id="rework-code-title">Subagent Stroke Synthesizer Parameter Diff (v1 → v2)</span>
+                <a href="#" id="rework-commit-link" target="_blank" rel="noopener noreferrer" class="commit-sha-pill" data-testid="link-rework-commit">
+                  Commit #12 · a000b10 ↗
+                </a>
+              </div>
+              <div class="code-diff-columns">
+                <pre class="code-block code-v1"><code id="rework-code-v1"></code></pre>
+                <pre class="code-block code-v2"><code id="rework-code-v2"></code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hover Any Brushstroke -> View Code & Git Commit Telemetry Strip -->
+        <div class="stroke-inspector-bar" id="stroke-inspector-bar" data-testid="panel-stroke-inspector">
+          <div class="inspector-left">
+            <span class="swatch-box" id="insp-swatch" style="background:#5882C4"></span>
+            <div class="insp-meta">
+              <div class="insp-top-line">
+                <strong id="insp-stroke-id">Stroke #14,820</strong>
+                <span class="insp-agent-badge" id="insp-agent-badge" style="--ag-color:#58A6FF">AG-01 · Claude Opus 4.6</span>
+                <span class="insp-pass-badge" id="insp-pass-badge">Pass 2 · Critique Rework</span>
+                <a href="https://github.com/jeff-grimes-pplx/multi-agent-starry-night/commit/a000b10" target="_blank" rel="noopener noreferrer" class="commit-sha-pill" id="insp-commit-link" data-testid="link-inspected-stroke-commit">
+                  Commit #12 · a000b10 ↗
+                </a>
+              </div>
+              <div class="insp-geom-line" id="insp-geom-line">
+                Quadratic Bézier (442.0, 268.0) → (446.8, 263.1) → (451.2, 266.4) · Bristle Width: 5.2px · Angle: -18.4° · Hex: #5882C4
+              </div>
+            </div>
+          </div>
+          <div class="inspector-code-wrap">
+            <code class="insp-code-snippet" id="insp-code-snippet">ctx.moveTo(442.0, 268.0); ctx.quadraticCurveTo(446.8, 263.1, 451.2, 266.4); // w=5.2px #5882C4</code>
+          </div>
+        </div>
+
+        <!-- Bottom Synchronized Timeline Scrubber & Playback Transport -->
+        <div class="timeline-transport-bar" aria-label="Orchestration Time-Lapse Playback Controls">
+          <div class="transport-controls">
+            <button type="button" class="btn-transport btn-primary-play" id="btn-play-pause" data-testid="button-play-pause" aria-label="Play or pause multi-agent painting time-lapse">
+              <span id="play-icon">▶</span> <span id="play-label">Play</span>
+            </button>
+            <button type="button" class="btn-transport" id="btn-restart" data-testid="button-restart" title="Restart time-lapse from 00:00 (Stroke 0)">
+              ↺ 00:00
+            </button>
+            <button type="button" class="btn-transport" id="btn-jump-critique" data-testid="button-jump-critique" title="Jump to Perplexity Computer QA Critique Phase (08:35)">
+              ⚡ QA Critique (08:35)
+            </button>
+            <button type="button" class="btn-transport" id="btn-jump-final" data-testid="button-jump-final" title="Jump to final merged master canvas (19,922 strokes)">
+              ✓ Final Merge (20:00)
+            </button>
+            <div class="speed-group" role="group" aria-label="Playback Speed">
+              <button type="button" class="speed-btn" data-speed="1" data-testid="button-speed-1x">1×</button>
+              <button type="button" class="speed-btn active" data-speed="4" data-testid="button-speed-4x">4×</button>
+              <button type="button" class="speed-btn" data-speed="10" data-testid="button-speed-10x">10×</button>
+              <button type="button" class="speed-btn" data-speed="25" data-testid="button-speed-25x">25×</button>
+            </div>
+          </div>
+
+          <div class="scrubber-track-area">
+            <div class="scrubber-time-readout">
+              <span class="clock-val" id="clock-current">20:00</span>
+              <span class="clock-sep">/</span>
+              <span class="clock-total">20:00</span>
+            </div>
+            <div class="scrubber-slider-container">
+              <label for="timeline-scrubber" class="sr-only">Scrub brushstrokes from 0 to 19,922</label>
+              <input type="range" id="timeline-scrubber" data-testid="input-timeline-scrubber" min="0" max="19922" value="19922" step="1" />
+              <!-- 18 Git Commit Milestone Ticks along Timeline -->
+              <div class="commit-ticks-row" id="commit-ticks-row" aria-label="18 Git Commit Milestones"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT PANEL: Synchronized Multi-Agent Swimlane Matrix, QA Critique Ledger & 18-Commit Git Stream -->
+      <aside class="orchestration-sidebar" aria-label="Synchronized Multi-Agent Orchestration Feed and Git Commit Ledger">
+        <!-- Top Swimlane Matrix -->
+        <div class="swimlane-panel">
+          <div class="panel-header-row">
+            <h2 class="panel-heading">Multi-Agent Orchestration Matrix</h2>
+            <span class="orchestrator-badge" data-testid="badge-lead-orchestrator">
+              Lead: Perplexity Computer (Gemini 4 Argon)
+            </span>
+          </div>
+
+          <div class="swimlane-list" id="swimlane-list" role="list">
+            <!-- Populated and updated at 60fps by app.js -->
+          </div>
+        </div>
+
+        <!-- Bottom Synchronized Inter-Agent Message, QA Critique & Git Commit Stream -->
+        <div class="stream-panel">
+          <div class="stream-header-row">
+            <h2 class="panel-heading">Live Review &amp; Git Commit Ledger</h2>
+            <div class="stream-filter-pills" role="tablist" aria-label="Filter Activity Stream">
+              <button type="button" class="stream-filter-btn active" data-filter="all" data-testid="button-filter-all">
+                All (23)
+              </button>
+              <button type="button" class="stream-filter-btn" data-filter="critique" data-testid="button-filter-critique">
+                QA Critiques (5)
+              </button>
+              <button type="button" class="stream-filter-btn" data-filter="commit" data-testid="button-filter-commit">
+                18 Commits
+              </button>
+            </div>
+          </div>
+
+          <div class="activity-stream-list" id="activity-stream-list" role="log" aria-live="polite" data-testid="list-activity-stream">
+            <!-- Populated by app.js -->
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

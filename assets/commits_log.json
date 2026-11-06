@@ -205,5 +205,13 @@
     "model": "Gemini 4 Argon",
     "type": "merge",
     "title": "Merge 19,922-stroke multi-agent impasto canvas & pass Python verification suite (SSIM 0.9138)"
+  },
+  {
+    "number": 18,
+    "timestamp": "20:00",
+    "phase": "release",
+    "agent_id": 0,
+    "sha": "62d4cf8",
+    "message": "feat(observatory-ui): ship interactive Multi-Agent Atelier Canvas observatory & release v1.0.0"
   }
 ]

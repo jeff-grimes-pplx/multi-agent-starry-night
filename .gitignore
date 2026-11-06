@@ -1,7 +1,3 @@
 __pycache__/
 *.pyc
-pipeline/fix_order.py
-pipeline/test_render.py
-pipeline/generate_atelier_data.py
-pipeline/create_git_orchestration_tree.py
-assets/diag_*.jpg
+/video_build/
