@@ -1,0 +1,11 @@
+{
+  "agent_id": 3,
+  "model": "GPT-6.1 Sol",
+  "version": "v1",
+  "strokes": 638,
+  "metrics": {
+    "psnr": 25.58,
+    "ssim": 0.8373,
+    "delta_e": 7.94
+  }
+}
