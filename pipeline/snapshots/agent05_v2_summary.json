@@ -1,0 +1,17 @@
+{
+  "agent_id": 5,
+  "model": "DeepSeek V4 Pro",
+  "version": "v2",
+  "strokes": 3835,
+  "metrics_v1": {
+    "psnr": 20.48,
+    "ssim": 0.6975,
+    "delta_e": 11.67
+  },
+  "metrics_v2": {
+    "psnr": 30.05,
+    "ssim": 0.9094,
+    "delta_e": 3.43
+  },
+  "summary": "Carved rolling diagonal cobalt/violet mountain contours, pale-ochre horizon mist band, and billowing silver-green olive-grove crowns (3,835 strokes; SSIM 0.6975 -> 0.9094)."
+}
