@@ -1,0 +1,133 @@
+{
+  "canvas_dimensions": {
+    "width": 1000,
+    "height": 792
+  },
+  "reference": "Vincent van Gogh \u2014 The Starry Night (June 1889, MoMA Public Domain)",
+  "total_strokes_v1": 4697,
+  "total_strokes_v2": 19922,
+  "pass1_strokes": 6697,
+  "pass2_rework_strokes": 13225,
+  "global_metrics_v1": {
+    "psnr": 20.95,
+    "ssim": 0.6951,
+    "delta_e": 11.83
+  },
+  "global_metrics_v2": {
+    "psnr": 30.79,
+    "ssim": 0.9138,
+    "delta_e": 3.16
+  },
+  "per_agent_metrics": {
+    "1": {
+      "agent_id": 1,
+      "strokes_v1": 1836,
+      "strokes_v2": 7460,
+      "v1": {
+        "psnr": 21.65,
+        "ssim": 0.6782,
+        "delta_e": 10.66
+      },
+      "v2": {
+        "psnr": 30.82,
+        "ssim": 0.9088,
+        "delta_e": 3.14
+      },
+      "crop_box": [
+        280,
+        120,
+        680,
+        440
+      ],
+      "crop_title": "Great Central Sky Vortex & Counter-Rotating Eddies"
+    },
+    "2": {
+      "agent_id": 2,
+      "strokes_v1": 729,
+      "strokes_v2": 3305,
+      "v1": {
+        "psnr": 19.34,
+        "ssim": 0.6492,
+        "delta_e": 18.08
+      },
+      "v2": {
+        "psnr": 30.5,
+        "ssim": 0.9258,
+        "delta_e": 3.33
+      },
+      "crop_box": [
+        735,
+        10,
+        995,
+        280
+      ],
+      "crop_title": "Waning Crescent Moon & Concentric Cadmium Corona"
+    },
+    "3": {
+      "agent_id": 3,
+      "strokes_v1": 638,
+      "strokes_v2": 2585,
+      "v1": {
+        "psnr": 25.58,
+        "ssim": 0.8373,
+        "delta_e": 7.94
+      },
+      "v2": {
+        "psnr": 33.72,
+        "ssim": 0.9405,
+        "delta_e": 2.26
+      },
+      "crop_box": [
+        110,
+        180,
+        410,
+        760
+      ],
+      "crop_title": "Foreground Cypress Flame Silhouette & Umber Counter-Strokes"
+    },
+    "4": {
+      "agent_id": 4,
+      "strokes_v1": 546,
+      "strokes_v2": 2737,
+      "v1": {
+        "psnr": 19.27,
+        "ssim": 0.6464,
+        "delta_e": 12.19
+      },
+      "v2": {
+        "psnr": 30.14,
+        "ssim": 0.8911,
+        "delta_e": 3.57
+      },
+      "crop_box": [
+        430,
+        485,
+        830,
+        785
+      ],
+      "crop_title": "Saint-R\u00e9my Village Roofs & Saint-Martin Gothic Spire"
+    },
+    "5": {
+      "agent_id": 5,
+      "strokes_v1": 948,
+      "strokes_v2": 3835,
+      "v1": {
+        "psnr": 20.48,
+        "ssim": 0.6975,
+        "delta_e": 11.67
+      },
+      "v2": {
+        "psnr": 30.05,
+        "ssim": 0.9094,
+        "delta_e": 3.43
+      },
+      "crop_box": [
+        580,
+        340,
+        995,
+        660
+      ],
+      "crop_title": "Alpilles Mountain Ridge Contours, Mist Band & Olive Groves"
+    }
+  }
+}
