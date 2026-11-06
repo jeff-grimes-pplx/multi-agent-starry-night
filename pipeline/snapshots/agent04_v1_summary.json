@@ -1,0 +1,11 @@
+{
+  "agent_id": 4,
+  "model": "Claude Sonnet 4.6",
+  "version": "v1",
+  "strokes": 546,
+  "metrics": {
+    "psnr": 19.27,
+    "ssim": 0.6464,
+    "delta_e": 12.19
+  }
+}
