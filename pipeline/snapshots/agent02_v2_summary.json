@@ -1,0 +1,17 @@
+{
+  "agent_id": 2,
+  "model": "Gemini 4 Argon",
+  "version": "v2",
+  "strokes": 3305,
+  "metrics_v1": {
+    "psnr": 19.34,
+    "ssim": 0.6492,
+    "delta_e": 18.08
+  },
+  "metrics_v2": {
+    "psnr": 30.5,
+    "ssim": 0.9258,
+    "delta_e": 3.33
+  },
+  "summary": "Replaced diffuse radial spokes with 3,305 concentric broken-dash impasto arc strokes around the waning crescent Moon, Venus, and 11 stars; SSIM jumped from 0.6492 to 0.9258."
+}
