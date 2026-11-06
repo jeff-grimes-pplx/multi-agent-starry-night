@@ -1,0 +1,41 @@
+{
+  "orchestrator": "Perplexity Computer (Gemini 4 Argon)",
+  "reference": "Vincent van Gogh \u2014 The Starry Night (June 1889, MoMA Public Domain, 1000x792)",
+  "agents": [
+    {
+      "id": 1,
+      "slug": "agent-01-opus",
+      "name": "Turbulent Sky & Great Vortex Architect",
+      "model": "Claude Opus 4.6",
+      "coverage_pct": 39.2
+    },
+    {
+      "id": 2,
+      "slug": "agent-02-argon",
+      "name": "Celestial Corona & Astro-Luminance Specialist",
+      "model": "Gemini 4 Argon",
+      "coverage_pct": 15.6
+    },
+    {
+      "id": 3,
+      "slug": "agent-03-sol",
+      "name": "Foreground Cypress Flame Sculptor",
+      "model": "GPT-6.1 Sol",
+      "coverage_pct": 13.5
+    },
+    {
+      "id": 4,
+      "slug": "agent-04-sonnet",
+      "name": "Saint-R\u00e9my Village & Church Spire Draftsman",
+      "model": "Claude Sonnet 4.6",
+      "coverage_pct": 11.7
+    },
+    {
+      "id": 5,
+      "slug": "agent-05-deepseek",
+      "name": "Alpilles Mountain Ridge, Mist & Olive Grove Colorist",
+      "model": "DeepSeek V4 Pro",
+      "coverage_pct": 20.1
+    }
+  ]
+}
