@@ -286,7 +286,7 @@ button {
 
 .atelier-workspace {
   display: grid;
-  grid-template-columns: minmax(0, 1.58fr) minmax(380px, 1fr);
+  grid-template-columns: minmax(0, 1.45fr) minmax(430px, 1fr);
   flex: 1;
   min-height: 0;
   overflow: hidden;
@@ -1077,7 +1077,7 @@ button {
 
 .swimlane-row {
   display: grid;
-  grid-template-columns: 138px minmax(0, 1fr) auto;
+  grid-template-columns: 178px minmax(0, 1fr) auto;
   align-items: center;
   gap: var(--space-2);
   padding: 5px 8px;
@@ -1115,8 +1115,6 @@ button {
   font-weight: 700;
   color: var(--color-text);
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .swim-agent-model {

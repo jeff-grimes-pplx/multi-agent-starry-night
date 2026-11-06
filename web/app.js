@@ -33,8 +33,8 @@
     // Start at stroke 15,800 (~79% through orchestration, right in the middle of Act III v2 Rework)
     // and actively playing so the opening visual shows a rich, luminous Starry Night canvas
     // with all 5 subagent cursors actively laying down impasto strokes in parallel!
-    strokeCursor: 15800,
-    isPlaying: true,
+    strokeCursor: 19922,
+    isPlaying: false,
     speed: 4, // 1, 4, 10, 25
     lastFrameTime: performance.now(),
 
@@ -771,8 +771,13 @@
     if (activeCardEl && state.lastActiveCommitNum !== activeCommitNum) {
       state.lastActiveCommitNum = activeCommitNum;
       const listEl = dom.activityStreamList;
-      const targetScroll = Math.max(0, activeCardEl.offsetTop - listEl.offsetTop - 48);
-      listEl.scrollTo({ top: targetScroll, behavior: 'smooth' });
+      if (activeCommitNum >= 14) {
+        // Snap cleanly to the top of card #14 so no card is ever cut off at the top edge
+        const card14 = listEl.querySelector('[data-commit-num="14"]') || activeCardEl;
+        listEl.scrollTop = Math.max(0, card14.offsetTop - listEl.offsetTop);
+      } else {
+        listEl.scrollTop = Math.max(0, activeCardEl.offsetTop - listEl.offsetTop);
+      }
     }
 
     // 5. Update Subagent Swimlanes
@@ -921,13 +926,13 @@
         const de = ag.deltaEV1 - (ag.deltaEV1 - ag.deltaEV2) * phase.frac2;
         statusEl.textContent = 'Pass 2 Rework';
         statusEl.classList.add('status-emerald');
-        metricsEl.textContent = `ΔE ${de.toFixed(1)} · ${cnt.toLocaleString()}`;
+        metricsEl.textContent = `ΔE ${de.toFixed(2)} · ${cnt.toLocaleString()}`;
         barEl.style.width = `${Math.round(42 + phase.frac2 * 58)}%`;
       } else {
         row.classList.add('state-merged');
         statusEl.textContent = 'v2 Merged';
         statusEl.classList.add('status-emerald');
-        metricsEl.textContent = `ΔE ${ag.deltaEV2.toFixed(1)} · ${ag.strokesV2.toLocaleString()}`;
+        metricsEl.textContent = `ΔE ${ag.deltaEV2.toFixed(2)} · ${ag.strokesV2.toLocaleString()}`;
         barEl.style.width = '100%';
       }
     }
@@ -967,11 +972,11 @@
           <div class="stream-diff-thumbs">
             <div class="thumb-pair-item">
               <img src="assets/diffs/agent0${ag.id}_v1.jpg" alt="${ag.code} v1 crop" loading="lazy" />
-              <span class="thumb-tag thumb-v1">v1 · ΔE ${ag.deltaEV1.toFixed(1)}</span>
+              <span class="thumb-tag thumb-v1">v1 · ΔE ${ag.deltaEV1.toFixed(2)}</span>
             </div>
             <div class="thumb-pair-item">
               <img src="assets/diffs/agent0${ag.id}_v2.jpg" alt="${ag.code} v2 crop" loading="lazy" />
-              <span class="thumb-tag thumb-v2">v2 · ΔE ${ag.deltaEV2.toFixed(1)}</span>
+              <span class="thumb-tag thumb-v2">v2 · ΔE ${ag.deltaEV2.toFixed(2)}</span>
             </div>
             <button type="button" class="btn-open-diff" data-open-rework="${ag.id}">Inspect Diff</button>
           </div>
