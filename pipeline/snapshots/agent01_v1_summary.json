@@ -1,0 +1,11 @@
+{
+  "agent_id": 1,
+  "model": "Claude Opus 4.6",
+  "version": "v1",
+  "strokes": 1836,
+  "metrics": {
+    "psnr": 21.65,
+    "ssim": 0.6782,
+    "delta_e": 10.66
+  }
+}
